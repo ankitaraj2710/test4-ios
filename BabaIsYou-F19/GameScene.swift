@@ -13,10 +13,75 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 // add sprites
     var player:SKSpriteNode!
     let PLAYER_SPEED:CGFloat = 15
-
+    var flag:SKSpriteNode!
+    var winblock:SKSpriteNode!
+    var isblock:SKSpriteNode!
+    var wall:SKSpriteNode!
+    var stopblock:SKSpriteNode!
+    var wallblock:SKSpriteNode!
+    var flagblock:SKSpriteNode!
+    
+    
     override func didMove(to view: SKView) {
         self.physicsWorld.contactDelegate = self
         self.player = (self.childNode(withName: "player") as! SKSpriteNode)
+        self.player.physicsBody = SKPhysicsBody(rectangleOf: player.size)
+        self.player.physicsBody?.affectedByGravity = false
+        self.player.physicsBody?.categoryBitMask = 1
+        self.player.physicsBody?.contactTestBitMask = 4
+        
+        // adding hitboxes
+        self.stopblock = self.childNode(withName: "stopblock") as! SKSpriteNode
+        self.stopblock.physicsBody =  SKPhysicsBody(rectangleOf: stopblock.size)
+        self.stopblock.physicsBody?.affectedByGravity = false
+        self.stopblock.physicsBody?.categoryBitMask = 1
+        self.stopblock.physicsBody?.contactTestBitMask = 4
+        
+        
+        
+        self.flag = self.childNode(withName: "flag") as! SKSpriteNode
+        self.flag.physicsBody =  SKPhysicsBody(rectangleOf: flag.size)
+        self.flag.physicsBody?.affectedByGravity = false
+        self.flag.physicsBody?.categoryBitMask = 2
+        self.flag.physicsBody?.contactTestBitMask = 0
+        
+        
+        self.winblock = self.childNode(withName: "winblock") as! SKSpriteNode
+//        self.winblock = (self.childNode(withName: "winblock") as! SKSpriteNode)
+        self.winblock.physicsBody =  SKPhysicsBody(rectangleOf: winblock.size)
+        self.winblock.physicsBody?.affectedByGravity = false
+        self.winblock.physicsBody?.categoryBitMask = 4
+        self.winblock.physicsBody?.contactTestBitMask = 0
+        
+        
+        self.isblock = self.childNode(withName: "isblock") as! SKSpriteNode
+        self.isblock.physicsBody =  SKPhysicsBody(rectangleOf: isblock.size)
+        self.isblock.physicsBody?.affectedByGravity = false
+        self.isblock.physicsBody?.categoryBitMask = 6
+        self.isblock.physicsBody?.contactTestBitMask = 0
+        
+        
+        
+        self.wallblock = self.childNode(withName: "wallblock") as! SKSpriteNode
+        self.wallblock.physicsBody =  SKPhysicsBody(rectangleOf: wallblock.size)
+        self.wallblock.physicsBody?.affectedByGravity = false
+        self.wallblock.physicsBody?.categoryBitMask = 8
+        self.wallblock.physicsBody?.contactTestBitMask = 4
+        
+        
+        self.flagblock = self.childNode(withName: "flagblock") as! SKSpriteNode
+        self.flagblock.physicsBody =  SKPhysicsBody(rectangleOf: flagblock.size)
+        self.flagblock.physicsBody?.affectedByGravity = false
+        self.flagblock.physicsBody?.categoryBitMask = 32
+        self.flagblock.physicsBody?.contactTestBitMask = 0
+        
+        
+        self.wall = self.childNode(withName: "wall") as! SKSpriteNode
+        self.wall.physicsBody =  SKPhysicsBody(rectangleOf: wall.size)
+        self.wall.physicsBody?.affectedByGravity = false
+        self.wall.physicsBody?.categoryBitMask = 64
+        self.wall.physicsBody?.contactTestBitMask = 0
+        
     }
    
     func didBegin(_ contact: SKPhysicsContact) {
