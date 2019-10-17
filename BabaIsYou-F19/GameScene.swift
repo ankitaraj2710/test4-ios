@@ -45,7 +45,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.flag.physicsBody =  SKPhysicsBody(rectangleOf: flag.size)
         self.flag.physicsBody?.affectedByGravity = false
         self.flag.physicsBody?.categoryBitMask = 4
-        self.flag.physicsBody?.contactTestBitMask = 0
+        self.flag.physicsBody?.contactTestBitMask = 1
+        self.flag.physicsBody?.collisionBitMask = 0
         //
         
         
@@ -54,8 +55,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.winblock.physicsBody =  SKPhysicsBody(rectangleOf: winblock.size)
         self.winblock.physicsBody?.affectedByGravity = false
         self.winblock.physicsBody?.categoryBitMask = 6
-        self.winblock.physicsBody?.contactTestBitMask = 0
-        
+        self.winblock.physicsBody?.contactTestBitMask = 1
+        self.winblock.physicsBody?.collisionBitMask = 1
         
         self.isblock = self.childNode(withName: "isblock") as! SKSpriteNode
         self.isblock.physicsBody =  SKPhysicsBody(rectangleOf: isblock.size)
@@ -70,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.wallblock.physicsBody =  SKPhysicsBody(rectangleOf: wallblock.size)
         self.wallblock.physicsBody?.affectedByGravity = false
         self.wallblock.physicsBody?.categoryBitMask = 16
-        self.wallblock.physicsBody?.contactTestBitMask = 0
+        self.wallblock.physicsBody?.contactTestBitMask = 1
         self.wallblock.physicsBody?.collisionBitMask = 3
         
         
@@ -78,7 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.flagblock.physicsBody =  SKPhysicsBody(rectangleOf: flagblock.size)
         self.flagblock.physicsBody?.affectedByGravity = false
         self.flagblock.physicsBody?.categoryBitMask = 32
-        self.flagblock.physicsBody?.contactTestBitMask = 0
+        self.flagblock.physicsBody?.contactTestBitMask = 1
         self.flagblock.physicsBody?.collisionBitMask = 1
         
         
